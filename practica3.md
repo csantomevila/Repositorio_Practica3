@@ -24,6 +24,14 @@ danielcastelao.org.	900	IN	A	178.211.133.37
 ;; MSG SIZE  rcvd: 63
 
 
+
+
+
+
+
+
+
+
 2-Realiza consutas dos seguintes nomes e identifica as diferencias: moodle.danielcastelao.org, www.danielcastelao.org
 
 
@@ -57,6 +65,16 @@ moodle.danielcastelao.org:
     Resumen
 
     moodle.danielcastelao.org no existe (NXDOMAIN) mientras que danielcastelao.org sí existe (NOERROR) y tiene un registro A asociado a una dirección IP.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -98,6 +116,18 @@ ns2.hover.com.		7200	IN	A	64.98.148.13
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 4-Realiza as consultas de nomes inversas: 130.206.164.68 e de outras dúas IPs que se che ocorran.
 
 
@@ -123,6 +153,27 @@ _Direcciones_
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 5-A qué servidor DNS estás consultando? Cómo o podes cambiar sen tocar os ficheiros de configuración do sistema?
 
 
@@ -139,6 +190,24 @@ si quieres usar los servidores DNS de Google para una consulta, puedes hacer lo 
 
 Para averiguar qué servidor DNS estás usando: Utiliza dig o nmcli.
 Para cambiar temporalmente el servidor DNS: Usa el comando dig con @servidor_DNS para una consulta puntual.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -180,6 +249,19 @@ danielcastelao.org.	300	IN	SOA	ns1.hover.com. dnsmaster.hover.com. 1720467415 18
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 7-Consulta a IP de www.elpais.com. Cánto tempo queda almaceado o rexistro de recurso no DNS local?, se preguntas ó DNS local por este recurso, qué observas no TTL do rexistro?
 
     dig www.elpais.com
@@ -192,6 +274,24 @@ prisa-us-eu.map.fastly.net. 16	IN	A	199.232.194.133
 se ve la respuesta a la consulta, es decir, la dirección IP correspondiente a www.elpais.com, que es 199.232.194.133
 
 Tiempo almacenado en el registro-> 259 Segundos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -221,9 +321,40 @@ amazon.com.		669	IN	A	205.251.242.103
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 9- Determina o TTL máximo (original) dun nome de dominio.
 
 amazon.com.		669	IN	A	52.94.236.248 -> 669 segundos
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -241,6 +372,21 @@ www.google.es.		57	IN	A	142.250.200.131
 ;; SERVER: 127.0.0.53#53(127.0.0.53)
 ;; WHEN: Tue Oct 08 20:17:34 CEST 2024
 ;; MSG SIZE  rcvd: 58
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -263,6 +409,21 @@ J.ROOTSERVERS.NET.	3600	IN	A	3.33.243.145
 ;; MSG SIZE  rcvd: 78
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 12-Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
 
     Para ver todas las queries que realiza un servidor DNS, podrías utilizar la herramienta tcpdump
@@ -282,6 +443,27 @@ alsop-n.uk.		59	IN	A	54.76.240.177
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 13-Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
 
 
@@ -298,6 +480,22 @@ danielcastelao.org.	900	IN	MX	120 aspmx3.googlemail.com.
 danielcastelao.org.	900	IN	MX	140 aspmx5.googlemail.com.
 danielcastelao.org.	900	IN	MX	130 aspmx4.googlemail.com.
 danielcastelao.org.	900	IN	MX	90 alt1.aspmx.l.google.com.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
