@@ -1,4 +1,4 @@
-1-Realiza unha consulta "dig danielcastelao.org" e identific cada parte da resposta (IN, CNAME, A, QUERY SECTION, ANSWER SECTION, AUTHORITY SECTION, etc)
+###1-Realiza unha consulta "dig danielcastelao.org" e identific cada parte da resposta (IN, CNAME, A, QUERY SECTION, ANSWER SECTION, AUTHORITY SECTION, etc)
 
 
     dig danielcastelao.org
@@ -32,7 +32,7 @@ danielcastelao.org.	900	IN	A	178.211.133.37
 
 
 
-2-Realiza consutas dos seguintes nomes e identifica as diferencias: moodle.danielcastelao.org, www.danielcastelao.org
+###2-Realiza consutas dos seguintes nomes e identifica as diferencias: moodle.danielcastelao.org, www.danielcastelao.org
 
 
 
@@ -79,7 +79,7 @@ moodle.danielcastelao.org:
 
 
 
-3-Averigua o nome e IP dos servidores de DNS autoritativos de www.danielcastelao.org, por qué soen ser 2 servidores autoritativos?
+###3-Averigua o nome e IP dos servidores de DNS autoritativos de www.danielcastelao.org, por qué soen ser 2 servidores autoritativos?
 
 
 
@@ -128,7 +128,7 @@ ns2.hover.com.		7200	IN	A	64.98.148.13
 
 
 
-4-Realiza as consultas de nomes inversas: 130.206.164.68 e de outras dúas IPs que se che ocorran.
+###4-Realiza as consultas de nomes inversas: 130.206.164.68 e de outras dúas IPs que se che ocorran.
 
 
     dig -x 130.206.164.68
@@ -174,7 +174,7 @@ _Direcciones_
 
 
 
-5-A qué servidor DNS estás consultando? Cómo o podes cambiar sen tocar os ficheiros de configuración do sistema?
+###5-A qué servidor DNS estás consultando? Cómo o podes cambiar sen tocar os ficheiros de configuración do sistema?
 
 
     Dig
@@ -213,7 +213,7 @@ Para cambiar temporalmente el servidor DNS: Usa el comando dig con @servidor_DNS
 
 
 
-6-Obtén o rexistro SOA (Start of Authority) do dominio  moodle.danielcastelao.org preguntándolle ó servidor DNS de google e logo preoguntándollo directamente ó servidor primario do dominio danielcastelao.org.
+###6-Obtén o rexistro SOA (Start of Authority) do dominio  moodle.danielcastelao.org preguntándolle ó servidor DNS de google e logo preoguntándollo directamente ó servidor primario do dominio danielcastelao.org.
 
 
 1. Consulta al servidor DNS de Google
@@ -262,7 +262,7 @@ danielcastelao.org.	300	IN	SOA	ns1.hover.com. dnsmaster.hover.com. 1720467415 18
 
 
 
-7-Consulta a IP de www.elpais.com. Cánto tempo queda almaceado o rexistro de recurso no DNS local?, se preguntas ó DNS local por este recurso, qué observas no TTL do rexistro?
+###7-Consulta a IP de www.elpais.com. Cánto tempo queda almaceado o rexistro de recurso no DNS local?, se preguntas ó DNS local por este recurso, qué observas no TTL do rexistro?
 
     dig www.elpais.com
 
@@ -295,7 +295,7 @@ Tiempo almacenado en el registro-> 259 Segundos
 
 
 
-8-Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
+###8-Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
 
     Marca
 
@@ -340,7 +340,7 @@ amazon.com.		669	IN	A	205.251.242.103
 
 
 
-9- Determina o TTL máximo (original) dun nome de dominio.
+###9- Determina o TTL máximo (original) dun nome de dominio.
 
 amazon.com.		669	IN	A	52.94.236.248 -> 669 segundos
 
@@ -358,7 +358,7 @@ amazon.com.		669	IN	A	52.94.236.248 -> 669 segundos
 
 
 
-10- Averigua cántas máquinas con distintas IPs están detrás do dominio web www.google.es, sempre son as mesmas e na mesma orde? por qué?
+###10- Averigua cántas máquinas con distintas IPs están detrás do dominio web www.google.es, sempre son as mesmas e na mesma orde? por qué?
 
  una sola IP en la ANSWER SECTION, que en este caso es 142.250.200.131 ,  no siempre son iguales las respuestas
 
@@ -390,7 +390,7 @@ www.google.es.		57	IN	A	142.250.200.131
 
 
 
-11- Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
+###11- Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
 
 
 ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1;; -> ra: esta es la clave: significa Recursion Available, es decir, que el servidor ha procesado la consulta de forma recursiva.
@@ -424,7 +424,7 @@ J.ROOTSERVERS.NET.	3600	IN	A	3.33.243.145
 
 
 
-12-Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
+###12-Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
 
     Para ver todas las queries que realiza un servidor DNS, podrías utilizar la herramienta tcpdump
 sudo tcpdump -i any port 53
@@ -464,7 +464,7 @@ alsop-n.uk.		59	IN	A	54.76.240.177
 
 
 
-13-Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
+###13-Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
 
 
     christian@christian-VirtualBox:/usr/local/apache2/htdocs$ dig MX danielcastelao.org
@@ -499,7 +499,7 @@ danielcastelao.org.	900	IN	MX	90 alt1.aspmx.l.google.com.
 
 
 
-14-Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?
+###14-Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?
 
 
 AAAA (o "quad-A") en DNS proporciona una dirección IPv6 para un dominio.
