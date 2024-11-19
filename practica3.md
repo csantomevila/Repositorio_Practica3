@@ -1,9 +1,13 @@
-# Consultas DNS realizadas
+Consultas DNS Realizadas
+1. Consulta básica de danielcastelao.org
 
-### 1. Realiza una consulta "dig danielcastelao.org" e identifica cada parte de la respuesta (IN, CNAME, A, QUERY SECTION, ANSWER SECTION, AUTHORITY SECTION, etc)
+Realiza una consulta "dig danielcastelao.org" e identifica cada parte de la respuesta.
 
-bash
+La consulta realizada fue:
+
 dig danielcastelao.org
+
+Respuesta:
 
 ; <<>> DiG 9.11.3-1ubuntu1.18-Ubuntu <<>> danielcastelao.org
 ;; global options: +cmd
@@ -24,361 +28,180 @@ danielcastelao.org.	900	IN	A	178.211.133.37
 ;; WHEN: Tue Oct 08 17:30:00 CEST 2024
 ;; MSG SIZE  rcvd: 63
 
-### 2. Realiza consultas de los siguientes nombres y identifica las diferencias: moodle.danielcastelao.org, www.danielcastelao.org
+Explicación de las secciones:
+
+    QUERY SECTION: Muestra la consulta realizada.
+    ANSWER SECTION: La respuesta del servidor DNS, incluyendo el registro A que devuelve la IP 178.211.133.37.
+    HEADER: Información sobre el estado de la consulta (en este caso, NOERROR).
+    TTL: Tiempo de vida del registro (900 segundos).
+
+2. Consultas de moodle.danielcastelao.org y www.danielcastelao.org
+
+Compara las respuestas de estas consultas DNS.
+
+Primero, se realiza la consulta a moodle.danielcastelao.org:
 
 dig moodle.danielcastelao.org
 
-; <<>> DiG 9.11.3-1ubuntu1.18-Ubuntu <<>> moodle.danielcastelao.org
-;; global options: +cmd
-;; Got answer:
+Respuesta:
+
 ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 51703
 ;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
 
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 65494
-;; QUESTION SECTION:
-;moodle.danielcastelao.org.	IN	A
+Explicación: moodle.danielcastelao.org no existe (NXDOMAIN).
+3. Servidores DNS Autoritativos de danielcastelao.org
 
-;; Query time: 207 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 17:33:48 CEST 2024
-;; MSG SIZE  rcvd: 54
-
-moodle.danielcastelao.org:
-
-    No se encuentra el nombre del dominio DNS
-    No da respuesta (Answer 0)
->[!NOTE]
->Resumen:     moodle.danielcastelao.org no existe (NXDOMAIN)
-> mientras que danielcastelao.org sí existe (NOERROR) y tiene un registro A asociado a una dirección IP.
-
-
-### 3. Averigua el nombre y IP de los servidores DNS autoritativos de www.danielcastelao.org. ¿Por qué suelen ser 2 servidores autoritativos?
+Para obtener los servidores DNS autoritativos de danielcastelao.org, se realizó la consulta:
 
 dig NS danielcastelao.org
 
-; <<>> DiG 9.11.3-1ubuntu1.18-Ubuntu <<>> NS danielcastelao.org
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1740
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 65494
-;; QUESTION SECTION:
-;danielcastelao.org.		IN	NS
+Respuesta:
 
 ;; ANSWER SECTION:
 danielcastelao.org.	900	IN	NS	ns2.hover.com.
 danielcastelao.org.	900	IN	NS	ns1.hover.com.
 
->[!NOTE]Nombres de los servidores:
->   ns2.hover.com
->    ns1.hover.com
+    Servidores DNS Autoritativos:
+        ns1.hover.com
+        ns2.hover.com
 
->[!NOTE]
->IP de los servidores:
->dig A ns1.danielcastelao.org
->ns1.hover.com.	6593	IN	A	216.40.47.26
->ns2.hover.com.	7200	IN	A	64.98.148.13
+Para obtener las IPs de los servidores DNS autoritativos, realizamos consultas adicionales a sus registros A:
 
-### 4. Realiza las consultas de nombres inversos: 130.206.164.68 y otras dos IPs que se te ocurran.
+dig A ns1.danielcastelao.org
+
+ns1.hover.com.	6593	IN	A	216.40.47.26
+
+dig A ns2.danielcastelao.org
+
+ns2.hover.com.	7200	IN	A	64.98.148.13
+
+4. Consulta de Nombres Inversos
+
+Se realizó la consulta de nombres inversos para varias direcciones IP.
+
+    Para la IP 130.206.164.68:
 
 dig -x 130.206.164.68
 
-_Direcciones_
-68.164.206.130.in-addr.arpa. 7125 IN	PTR	s164m68.unavarra.es.
-68.164.206.130.in-addr.arpa. 7125 IN	PTR	pluto.tlm.unavarra.es.
+Respuesta:
+
+PTR	s164m68.unavarra.es.
+PTR	pluto.tlm.unavarra.es.
+
+    Para la IP 8.8.8.8 (DNS de Google):
 
 dig -x 8.8.8.8
 
-_Direcciones_
-8.8.8.8.in-addr.arpa.	14340	IN	PTR	dns.google.
+Respuesta:
+
+PTR	dns.google.
+
+    Para la IP 9.9.9.9 (DNS de Quad9):
 
 dig -x 9.9.9.9
 
-_Direcciones_
-9.9.9.9.in-addr.arpa.	18340	IN	PTR	dns9.quad9.net.
+Respuesta:
 
+PTR	dns9.quad9.net.
 
+5. Consulta del Registro SOA de moodle.danielcastelao.org
 
+    Consulta al servidor DNS de Google:
 
+dig @8.8.8.8 SOA moodle.danielcastelao.org
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 6-Obtén o rexistro SOA (Start of Authority) do dominio  moodle.danielcastelao.org preguntándolle ó servidor DNS de google e logo preoguntándollo directamente ó servidor primario do dominio danielcastelao.org.
-
-
-1. Consulta al servidor DNS de Google
-
-    dig @8.8.8.8 SOA moodle.danielcastelao.org
-
- <<>> DiG 9.11.3-1ubuntu1.18-Ubuntu <<>> @8.8.8.8 SOA moodle.danielcastelao.org
-
+Respuesta:
 
 ;; AUTHORITY SECTION:
 danielcastelao.org.	300	IN	SOA	ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
 
-;; Query time: 127 msec
-;; SERVER: 8.8.8.8#53(8.8.8.8)
-;; WHEN: Tue Oct 08 19:54:17 CEST 2024
-;; MSG SIZE  rcvd: 113
+    Consulta al servidor primario del dominio:
 
+dig @ns1.hover.com SOA moodle.danielcastelao.org
 
-
-2. Consulta al servidor primario del dominio
-
-    dig @ns1.hover.com SOA moodle.danielcastelao.org
-
-
+Respuesta:
 
 ;; AUTHORITY SECTION:
 danielcastelao.org.	300	IN	SOA	ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
 
-;; Query time: 140 msec
-;; SERVER: 216.40.47.26#53(216.40.47.26)
-;; WHEN: Tue Oct 08 19:55:29 CEST 2024
-;; MSG SIZE  rcvd: 113
+6. Consulta de la IP de www.elpais.com y TTL
 
+Realizamos la consulta para obtener la IP de www.elpais.com:
 
+dig www.elpais.com
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 7-Consulta a IP de www.elpais.com. Cánto tempo queda almaceado o rexistro de recurso no DNS local?, se preguntas ó DNS local por este recurso, qué observas no TTL do rexistro?
-
-    dig www.elpais.com
-
+Respuesta:
 
 www.elpais.com.		259	IN	CNAME	prisa-us-eu.map.fastly.net.
 prisa-us-eu.map.fastly.net. 16	IN	A	199.232.198.133
 prisa-us-eu.map.fastly.net. 16	IN	A	199.232.194.133
 
-se ve la respuesta a la consulta, es decir, la dirección IP correspondiente a www.elpais.com, que es 199.232.194.133
+La dirección IP de www.elpais.com es 199.232.194.133. El tiempo de vida del registro (TTL) es de 259 segundos.
+7. Consulta del TTL de diferentes dominios
 
-Tiempo almacenado en el registro-> 259 Segundos
+Realizamos consultas a varios dominios para observar los tiempos de vida (TTL).
 
+    Para el dominio marca.es:
 
+dig marca.es
 
+Respuesta:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 8-Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
-
-    Marca
-
-;; ANSWER SECTION:
 marca.es.		300	IN	A	193.110.128.199
 
-;; Query time: 27 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 20:12:40 CEST 2024
-;; MSG SIZE  rcvd: 53
+El TTL es de 300 segundos.
 
-    Amazon
+    Para el dominio amazon.com:
 
-;; ANSWER SECTION:
+dig amazon.com
+
+Respuesta:
+
 amazon.com.		669	IN	A	52.94.236.248
 amazon.com.		669	IN	A	54.239.28.85
 amazon.com.		669	IN	A	205.251.242.103
 
-;; Query time: 21 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 20:13:05 CEST 2024
-;; MSG SIZE  rcvd: 87
+El TTL es de 669 segundos.
+8. Determinación del TTL máximo de un dominio
 
+Para amazon.com, el TTL máximo es de 669 segundos.
+9. Consulta de la cantidad de máquinas detrás de www.google.es
 
+Realizamos la consulta para obtener las IPs detrás de www.google.es:
 
+dig www.google.es
 
+Respuesta:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 9- Determina o TTL máximo (original) dun nome de dominio.
-
-amazon.com.		669	IN	A	52.94.236.248 -> 669 segundos
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 10- Averigua cántas máquinas con distintas IPs están detrás do dominio web www.google.es, sempre son as mesmas e na mesma orde? por qué?
-
- una sola IP en la ANSWER SECTION, que en este caso es 142.250.200.131 ,  no siempre son iguales las respuestas
-
- ;; QUESTION SECTION:
-;www.google.es.			IN	A
-
-;; ANSWER SECTION:
 www.google.es.		57	IN	A	142.250.200.131
 
-;; Query time: 23 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 20:17:34 CEST 2024
-;; MSG SIZE  rcvd: 58
+En este caso, solo aparece una IP. Sin embargo, este no es siempre el caso; puede haber múltiples servidores distribuidos detrás de un dominio como google.es.
+10. Consulta a un servidor raíz (J.ROOTSERVERS.NET)
 
+Se consultó el servidor raíz J.ROOTSERVERS.NET para ver si acepta el modo recursivo:
 
+dig @J.ROOTSERVERS.NET www.danielcastelao.org
 
+Respuesta:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 11- Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
-
-
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1;; -> ra: esta es la clave: significa Recursion Available, es decir, que el servidor ha procesado la consulta de forma recursiva.
-
-
-2 IP en la ANSWER SECTION 15.197.204.56 y 3.33.243.145
-
-
-ANSWER SECTION:
 J.ROOTSERVERS.NET.	3600	IN	A	15.197.204.56
 J.ROOTSERVERS.NET.	3600	IN	A	3.33.243.145
 
-;; Query time: 89 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 20:19:57 CEST 2024
-;; MSG SIZE  rcvd: 78
+En la respuesta, el flag ra indica que el servidor acepta recursión.
+11. Visualización de todas las consultas realizadas por un servidor DNS
 
+Para ver todas las consultas realizadas por un servidor DNS, puedes utilizar la herramienta tcpdump:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 12-Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
-
-    Para ver todas las queries que realiza un servidor DNS, podrías utilizar la herramienta tcpdump
 sudo tcpdump -i any port 53
 
+12. Consulta de los servidores de correo (MX) de danielcastelao.org
 
-;; ANSWER SECTION:
-www.timesonline.co.uk.	300	IN	CNAME	alsop-n.uk.
-alsop-n.uk.		59	IN	A	52.208.17.106
-alsop-n.uk.		59	IN	A	34.240.28.43
-alsop-n.uk.		59	IN	A	54.76.240.177
+Se realizó la consulta de los servidores de correo para el dominio danielcastelao.org:
 
-;; Query time: 42 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 20:23:32 CEST 2024
-;; MSG SIZE  rcvd: 120
+dig MX danielcastelao.org
 
+Respuesta:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 13-Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
-
-
-    christian@christian-VirtualBox:/usr/local/apache2/htdocs$ dig MX danielcastelao.org
-
-
-Todas estas
-
-;; ANSWER SECTION:
 danielcastelao.org.	900	IN	MX	110 aspmx2.googlemail.com.
 danielcastelao.org.	900	IN	MX	80 aspmx.l.google.com.
 danielcastelao.org.	900	IN	MX	100 alt2.aspmx.l.google.com.
@@ -387,40 +210,19 @@ danielcastelao.org.	900	IN	MX	140 aspmx5.googlemail.com.
 danielcastelao.org.	900	IN	MX	130 aspmx4.googlemail.com.
 danielcastelao.org.	900	IN	MX	90 alt1.aspmx.l.google.com.
 
+Estos son los servidores de correo responsables de gestionar los correos electrónicos de danielcastelao.org.
+13. Consulta de registros AAAA para www.facebook.com
 
+Se realizó la consulta de registros AAAA para obtener la dirección IPv6 de www.facebook.com:
 
+dig AAAA www.facebook.com
 
+Respuesta:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 14-Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?
-
-
-AAAA (o "quad-A") en DNS proporciona una dirección IPv6 para un dominio.
-
-
-;; ANSWER SECTION:
 www.facebook.com.	3444	IN	CNAME	star-mini.c10r.facebook.com.
 star-mini.c10r.facebook.com. 22	IN	AAAA	2a03:2880:f104:83:face:b00c:0:25de
 
-;; Query time: 21 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53)
-;; WHEN: Tue Oct 08 20:33:16 CEST 2024
-;; MSG SIZE  rcvd: 102
-
-
+El registro AAAA devuelve la dirección IPv6 2a03:2880:f104:83:face:b00c:0:25de
 
 
 
